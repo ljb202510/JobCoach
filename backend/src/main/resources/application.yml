@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: jobcoach
+  profiles:
+    default: fake
+server:
+  port: 8080
