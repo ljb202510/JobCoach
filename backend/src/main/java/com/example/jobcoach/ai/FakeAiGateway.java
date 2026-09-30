@@ -1,5 +1,6 @@
 package com.example.jobcoach.ai;
 
+import com.example.jobcoach.domain.MatchReport;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 

@@ -1,0 +1,20 @@
+### 普通文本调用
+POST {{$dotenv AI_BASE_URL}}/chat/completions
+Authorization: Bearer {{$dotenv AI_API_KEY}}
+Content-Type: application/json
+
+{"model":"{{$dotenv AI_MODEL}}","messages":[{"role":"user","content":"用一句话说明岗位匹配分析的目标"}]}
+
+### 结构化输出探测（服务是否真正遵守 JSON 需实测）
+POST {{$dotenv AI_BASE_URL}}/chat/completions
+Authorization: Bearer {{$dotenv AI_API_KEY}}
+Content-Type: application/json
+
+{"model":"{{$dotenv AI_MODEL}}","messages":[{"role":"user","content":"只输出 JSON：{\"matchScore\":0,\"evidence\":[]}"}],"response_format":{"type":"json_object"}}
+
+### Tool Calling 探测（工具无副作用）
+POST {{$dotenv AI_BASE_URL}}/chat/completions
+Authorization: Bearer {{$dotenv AI_API_KEY}}
+Content-Type: application/json
+
+{"model":"{{$dotenv AI_MODEL}}","messages":[{"role":"user","content":"为 Spring Boot 制定一个准备任务"}],"tools":[{"type":"function","function":{"name":"draft_preparation_task","description":"仅返回待确认的任务草案，不执行写入","parameters":{"type":"object","properties":{"title":{"type":"string"},"reason":{"type":"string"}},"required":["title","reason"]}}}]}

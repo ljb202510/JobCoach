@@ -1,17 +1,17 @@
 services:
   mysql:
     image: mysql:8.4
-    container_name: ai-requirement-mysql
+    container_name: jobcoach-mysql
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: ai_requirement
-      MYSQL_USER: ai_app
+      MYSQL_DATABASE: jobcoach
+      MYSQL_USER: jobcoach_app
       MYSQL_PASSWORD: change_me_locally
       MYSQL_ROOT_PASSWORD: change_root_locally
     ports:
       - "3306:3306"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - jobcoach_mysql_data:/var/lib/mysql
 
 volumes:
-  mysql_data:
+  jobcoach_mysql_data:

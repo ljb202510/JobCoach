@@ -1,4 +1,4 @@
-package com.example.jobcoach.ai;
+package com.example.jobcoach.domain;
 
 import java.util.List;
 

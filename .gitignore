@@ -4,6 +4,10 @@
 target/
 node_modules/
 dist/
+frontend/dist/
+*.tsbuildinfo
+frontend/vite.config.js
+frontend/vite.config.d.ts
 .idea/
 .vscode/
 *.log

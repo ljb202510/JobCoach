@@ -1,7 +1,7 @@
 package com.example.jobcoach.web;
 
-import com.example.jobcoach.ai.AiGateway;
-import com.example.jobcoach.ai.MatchReport;
+import com.example.jobcoach.application.MatchAnalysisService;
+import com.example.jobcoach.domain.MatchReport;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/matches")
 public class MatchController {
-    private final AiGateway aiGateway;
+    private final MatchAnalysisService matchAnalysisService;
 
-    public MatchController(AiGateway aiGateway) {
-        this.aiGateway = aiGateway;
+    public MatchController(MatchAnalysisService matchAnalysisService) {
+        this.matchAnalysisService = matchAnalysisService;
     }
 
     @PostMapping
     public ResponseEntity<MatchReport> analyze(@Valid @RequestBody MatchRequest request) {
-        return ResponseEntity.ok(aiGateway.analyze(request.jobDescription(), request.profile()));
+        return ResponseEntity.ok(matchAnalysisService.analyze(request.jobDescription(), request.profile()));
     }
 
     public record MatchRequest(

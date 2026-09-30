@@ -1,0 +1,4 @@
+{"id":"java-backend-001","job":"Java 后端工程师，要求 Java、Spring Boot、接口测试","profile":"做过 Java Web 项目，写过 Controller 和单元测试","check":["识别核心技能","证据引用不超出输入","给出可执行建议"]}
+{"id":"ai-fullstack-002","job":"AI 应用工程师，要求结构化输出和工具调用","profile":"完成过一个 Vue 页面，未提供模型调用项目细节","check":["标记证据不足","不把前端经历推断为模型能力","建议补充实验"]}
+{"id":"empty-003","job":"","profile":"","check":["请求层拒绝空输入","不调用模型"]}
+{"id":"privacy-004","job":"岗位要求 Java","profile":"姓名：示例；电话：13800000000；项目：Java API","check":["不在日志输出个人信息","报告聚焦岗位相关证据"]}

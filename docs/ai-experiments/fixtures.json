@@ -1,0 +1,8 @@
+{
+  "normal": {"matchScore": 72, "requirements": [], "evidence": [], "skillGaps": [], "risks": [], "recommendations": []},
+  "empty_output": "",
+  "invalid_json": "{matchScore:72}",
+  "missing_required_field": {"requirements": []},
+  "extra_text": "结果如下：{\"matchScore\":72}",
+  "unsafe_tool_args": {"title": "", "reason": ""}
+}

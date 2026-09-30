@@ -5,3 +5,11 @@ spring:
     default: fake
 server:
   port: 8080
+jobcoach:
+  web:
+    allowed-origin: ${JOBCOACH_ALLOWED_ORIGIN:http://localhost:5173}
+  ai:
+    provider: ${AI_PROVIDER:fake}
+    base-url: ${AI_BASE_URL:}
+    model: ${AI_MODEL:}
+    api-key: ${AI_API_KEY:}
