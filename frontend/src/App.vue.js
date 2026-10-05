@@ -5,6 +5,7 @@ const profile = ref('');
 const report = ref(null);
 const status = ref('idle');
 const errorMessage = ref('');
+const lastRequest = ref(null);
 const canSubmit = computed(() => Boolean(jobDescription.value.trim() && profile.value.trim()));
 async function submitMatch() {
     if (!canSubmit.value || status.value === 'loading') {
@@ -13,11 +14,12 @@ async function submitMatch() {
     status.value = 'loading';
     errorMessage.value = '';
     report.value = null;
+    lastRequest.value = {
+        jobDescription: jobDescription.value.trim(),
+        profile: profile.value.trim(),
+    };
     try {
-        report.value = await analyzeMatch({
-            jobDescription: jobDescription.value.trim(),
-            profile: profile.value.trim(),
-        });
+        report.value = await analyzeMatch(lastRequest.value);
         status.value = 'success';
     }
     catch (error) {
@@ -25,6 +27,13 @@ async function submitMatch() {
         errorMessage.value = error instanceof ApiRequestError
             ? error.message
             : '暂时无法连接后端，请确认服务已启动后重试。';
+    }
+}
+function retryMatch() {
+    if (lastRequest.value) {
+        jobDescription.value = lastRequest.value.jobDescription;
+        profile.value = lastRequest.value.profile;
+        void submitMatch();
     }
 }
 debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
@@ -41,6 +50,9 @@ __VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)(
 __VLS_asFunctionalElement(__VLS_intrinsicElements.h1, __VLS_intrinsicElements.h1)({});
 __VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
     ...{ class: "muted" },
+});
+__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
+    ...{ class: "mode-note" },
 });
 __VLS_asFunctionalElement(__VLS_intrinsicElements.section, __VLS_intrinsicElements.section)({
     ...{ class: "workspace" },
@@ -71,11 +83,17 @@ if (!__VLS_ctx.canSubmit && __VLS_ctx.status === 'idle') {
     });
 }
 if (__VLS_ctx.status === 'error') {
-    __VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({
+    __VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({
         ...{ class: "error" },
         role: "alert",
     });
+    __VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)({});
     (__VLS_ctx.errorMessage);
+    __VLS_asFunctionalElement(__VLS_intrinsicElements.button, __VLS_intrinsicElements.button)({
+        ...{ onClick: (__VLS_ctx.retryMatch) },
+        type: "button",
+        ...{ class: "retry" },
+    });
 }
 __VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)({
     ...{ class: "panel result-panel" },
@@ -158,10 +176,12 @@ else {
 /** @type {__VLS_StyleScopedClasses['shell']} */ ;
 /** @type {__VLS_StyleScopedClasses['eyebrow']} */ ;
 /** @type {__VLS_StyleScopedClasses['muted']} */ ;
+/** @type {__VLS_StyleScopedClasses['mode-note']} */ ;
 /** @type {__VLS_StyleScopedClasses['workspace']} */ ;
 /** @type {__VLS_StyleScopedClasses['panel']} */ ;
 /** @type {__VLS_StyleScopedClasses['hint']} */ ;
 /** @type {__VLS_StyleScopedClasses['error']} */ ;
+/** @type {__VLS_StyleScopedClasses['retry']} */ ;
 /** @type {__VLS_StyleScopedClasses['panel']} */ ;
 /** @type {__VLS_StyleScopedClasses['result-panel']} */ ;
 /** @type {__VLS_StyleScopedClasses['empty']} */ ;
@@ -179,6 +199,7 @@ const __VLS_self = (await import('vue')).defineComponent({
             errorMessage: errorMessage,
             canSubmit: canSubmit,
             submitMatch: submitMatch,
+            retryMatch: retryMatch,
         };
     },
 });

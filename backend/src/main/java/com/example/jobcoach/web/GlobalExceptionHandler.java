@@ -1,5 +1,6 @@
 package com.example.jobcoach.web;
 
+import com.example.jobcoach.ai.AiGatewayException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
@@ -39,6 +40,15 @@ public class GlobalExceptionHandler {
             Exception exception,
             HttpServletRequest request) {
         return error(HttpStatus.INTERNAL_SERVER_ERROR, "INTERNAL_ERROR", "服务暂时无法完成请求", request);
+    }
+
+    @ExceptionHandler(AiGatewayException.class)
+    public ResponseEntity<ApiError> handleAiGateway(
+            AiGatewayException exception,
+            HttpServletRequest request) {
+        HttpStatus status = exception.getCode().equals("AI_CONFIG_INVALID")
+                ? HttpStatus.INTERNAL_SERVER_ERROR : HttpStatus.BAD_GATEWAY;
+        return error(status, exception.getCode(), "AI 分析服务暂时不可用", request);
     }
 
     private ResponseEntity<ApiError> error(

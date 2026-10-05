@@ -47,7 +47,7 @@ $grill-me
 $planning-with-files
 
 这是一个可能跨多个会话的开发任务。
-请先建立 task_plan.md、findings.md 和 progress.md，
+请先阅读项目当前的目标与执行计划；本项目不再在根目录创建计划/日志文件，历史记录统一放在 docs/archive/project-history/，
 然后读取项目结构并记录关键发现。暂时不要大规模修改代码。
 ```
 
@@ -264,9 +264,9 @@ planning-with-files 用 Markdown 文件保存长任务的计划、发现和进�
 
 不同版本的文件名和工作方式可能不同；常见布局包括：
 
-- `task_plan.md`：目标、阶段、待办和完成状态。
-- `findings.md`：代码结构、调查结论、需要验证的假设。
-- `progress.md`：已做事项、测试结果、阻塞与下一步。
+- 当前目标：`docs/plan/PROJECT_GOALS.md`。
+- 当前执行计划：`docs/plan/20-hour-sprint.md`。
+- 历史记录：`docs/archive/project-history/`，仅供追溯，不作为当前目标。
 
 以安装版本实际说明为准，避免自己创建一套和工具不兼容的文件。
 

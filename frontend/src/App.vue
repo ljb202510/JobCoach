@@ -8,6 +8,7 @@ const profile = ref('')
 const report = ref<MatchReport | null>(null)
 const status = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
 const errorMessage = ref('')
+const lastRequest = ref<{ jobDescription: string; profile: string } | null>(null)
 
 const canSubmit = computed(() => Boolean(jobDescription.value.trim() && profile.value.trim()))
 
@@ -19,18 +20,27 @@ async function submitMatch() {
   status.value = 'loading'
   errorMessage.value = ''
   report.value = null
+  lastRequest.value = {
+    jobDescription: jobDescription.value.trim(),
+    profile: profile.value.trim(),
+  }
 
   try {
-    report.value = await analyzeMatch({
-      jobDescription: jobDescription.value.trim(),
-      profile: profile.value.trim(),
-    })
+    report.value = await analyzeMatch(lastRequest.value)
     status.value = 'success'
   } catch (error) {
     status.value = 'error'
     errorMessage.value = error instanceof ApiRequestError
       ? error.message
       : '暂时无法连接后端，请确认服务已启动后重试。'
+  }
+}
+
+function retryMatch() {
+  if (lastRequest.value) {
+    jobDescription.value = lastRequest.value.jobDescription
+    profile.value = lastRequest.value.profile
+    void submitMatch()
   }
 }
 </script>
@@ -41,6 +51,7 @@ async function submitMatch() {
       <p class="eyebrow">JOBCOACH</p>
       <h1>AI 求职教练系统</h1>
       <p class="muted">先把岗位要求和个人证据对齐，再决定准备什么。</p>
+      <p class="mode-note">当前分析模式由后端 AI_PROVIDER 配置决定，Fake 模式可用于离线演示。</p>
     </header>
 
     <section class="workspace">
@@ -52,7 +63,10 @@ async function submitMatch() {
           {{ status === 'loading' ? '分析中…' : '分析岗位匹配' }}
         </button>
         <p v-if="!canSubmit && status === 'idle'" class="hint">请填写岗位描述和个人经历。</p>
-        <p v-if="status === 'error'" class="error" role="alert">{{ errorMessage }}</p>
+        <div v-if="status === 'error'" class="error" role="alert">
+          <p>{{ errorMessage }}</p>
+          <button type="button" class="retry" @click="retryMatch">重试分析</button>
+        </div>
       </div>
 
       <div class="panel result-panel">

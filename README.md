@@ -35,7 +35,7 @@ JobCoach 是一个以 Java 为主线的 AI 求职准备系统，帮助求职者�
 - MySQL 持久化、删除策略和隐私评审。
 - RAG、流式输出、登录、文件解析和多 Agent 产品能力。
 
-详细状态见 [`docs/engineering/status-matrix.md`](docs/engineering/status-matrix.md) 和 [`progress.md`](progress.md)。
+详细状态见 [`docs/engineering/status-matrix.md`](docs/engineering/status-matrix.md) 和当前 [`20 小时冲刺计划`](docs/plan/20-hour-sprint.md)。历史计划与日志统一放在 [`docs/archive/`](docs/archive/README.md)，不作为当前目标依据。
 
 ## 技术结构
 
@@ -65,21 +65,14 @@ Spring Boot Web -> Application -> Domain
 
 - [本地运行说明](docs/engineering/02-local-development.md)：环境检查、测试、启动和 Fake 演示。
 - [项目目标](docs/plan/PROJECT_GOALS.md)：产品目标、4:4:2 投入权重和完成判据。
-- [项目进度](progress.md)：当前状态、下一步和高 Token 消耗事项。
+- [20 小时冲刺计划](docs/plan/20-hour-sprint.md)：当前唯一执行计划，包含完整敏捷开发、学习和验收流程。
+- [下一步 backlog](docs/plan/next-backlog.md)：本轮之外的候选工作。
 - [文档导航](docs/README.md)：计划、产品、工程、概念、AI coding 和 Review 材料。
 - [实现边界](docs/product/11-implementation-boundaries.md)：已实现、未实现和当前局限。
 
-## 学习与交付路线
+## 当前执行路线
 
-五天主线围绕同一个 MVP 连续迭代：
-
-1. 需求、边界、验收标准和 AI coding 工作方式。
-2. Fake 后端主链路。
-3. 真实模型能力和受控工具。
-4. Vue 联调、端到端验证和 RAG 对照实验。
-5. 整体 Review、回归、文档和下一轮 backlog。
-
-后续 30 天路线会依次扩大真实模型、MySQL、工具、评测和交付边界；每周只扩大一个主要行为范围。
+当前只执行 [`JobCoach 20 小时冲刺`](docs/plan/20-hour-sprint.md)。它把需求评审、优先级排序、模块拆分、阅读学习、实现、单元测试、整体联调、Code Review、快速迭代和最终交付串成一个连续敏捷闭环。旧五天计划和 30 天路线已归档，避免与当前目标混淆。
 
 ## 安全与可信边界
 

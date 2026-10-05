@@ -8,14 +8,22 @@ export class ApiRequestError extends Error {
 
 export async function analyzeMatch(request: MatchRequest): Promise<MatchReport> {
   let response: Response
+  const controller = new AbortController()
+  const timeout = window.setTimeout(() => controller.abort(), 20_000)
   try {
     response = await fetch('/api/matches', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(request),
+      signal: controller.signal,
     })
-  } catch {
-    throw new Error('网络请求失败')
+  } catch (error) {
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      throw new Error('分析超过 20 秒仍未完成，请检查模型服务后重试。')
+    }
+    throw new Error('网络请求失败，请确认后端服务已启动。')
+  } finally {
+    window.clearTimeout(timeout)
   }
   if (!response.ok) {
     const payload = await response.json().catch(() => ({

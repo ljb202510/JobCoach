@@ -1,14 +1,12 @@
 # JobCoach 文档导航
 
-所有文档按用途分组。首次进入项目按“目标 → 路线 → 今日任务 → 当前实现”阅读。
+所有文档按用途分组。当前执行只以“目标 → 20 小时冲刺 → 当前实现”为准；历史计划和日志见 `archive/`，不作为当前目标依据。
 
 ## 1. 先读：目标与路线（`plan/`）
 
 - [PROJECT_GOALS.md](plan/PROJECT_GOALS.md)：唯一的目标基准、4:4:2 权重、边界和防偏规则。
-- [00-learning-roadmap.md](plan/00-learning-roadmap.md)：五天学习与交付总览。
-- [day-1-tasks.md](plan/day-1-tasks.md) 至 [day-5-tasks.md](plan/day-5-tasks.md)：围绕 AI coding 主线推进 JobCoach MVP 的五轮迭代任务、耗时、验收和复盘问题。
-- [preflight-assets-plan.md](plan/preflight-assets-plan.md)：用户暂离期间可直接完成的低风险前置工作。
-- [01-background-agent-brief.md](plan/01-background-agent-brief.md)：后续 Agent 接手简报。
+- [20-hour-sprint.md](plan/20-hour-sprint.md)：当前唯一执行计划，包含完整敏捷开发、阅读学习、Agent 协作和验收门禁。
+- [next-backlog.md](plan/next-backlog.md)：当前冲刺之外的候选工作。
 
 ## 2. 再读：JobCoach 产品与技术设计（`product/`）
 
@@ -47,7 +45,7 @@
 
 ## 前置资产概览
 
-- 当前 `docs/` 共 78 篇 Markdown：`ai-coding` 17 篇、`ai-experiments` 4 篇、`engineering` 12 篇、`plan` 10 篇、`product` 16 篇、`review` 4 篇、`concepts` 13 篇、`archive` 1 篇。
+- 当前 `docs/` 共 87 篇 Markdown；其中 `plan/` 只保留当前目标、20 小时冲刺和 backlog，旧计划与日志均在 `archive/`。
 - 核心概念文档：12 篇主题文档，另有 1 份索引。
 - AI coding 文档：17 篇流程、方法、模板和会话记录。
 - JobCoach 产品文档：12 篇编号规格、3 篇横向概览和 1 份索引。
@@ -69,9 +67,8 @@
 
 - [ai-experiments/README.md](ai-experiments/README.md)：无密钥实验入口、夹具、最小评测集和质量清单。
 
-路线补充：[30-day-incremental-roadmap.md](plan/30-day-incremental-roadmap.md)。
-
 ## 7. 文档状态与历史（`review/`、`archive/`）
 
 - 当前正式产品：JobCoach。
 - [archive-requirement-assistant-goals.md](archive/archive-requirement-assistant-goals.md)：早期未确认方向，仅供历史参考，不得作为需求依据。
+- [archive/README.md](archive/README.md)：历史计划、根目录日志和旧方向的归档说明。
