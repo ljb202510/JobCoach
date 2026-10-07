@@ -27,6 +27,10 @@
 8. [错误模型](07-error-model.md)
 9. [演示脚本](08-demo-script.md)
 10. [简历描述](09-resume-description.md)
+11. [Codex 扩展需求独立提案](13-codex-extension-requirements.md)
+12. [Qoder 扩展需求独立提案](14-qoder-extension-requirements.md)
+13. [三方交叉评审共识规格](15-consensus-requirements.md)
+14. [第 1 期产品基座需求规格（正式版）](16-phase1-requirements.md)
 
 跨文档说明合并到单篇 `overview.md`：
 
