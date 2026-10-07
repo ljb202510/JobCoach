@@ -1,8 +1,8 @@
 package com.example.jobcoach.tool;
 
 import com.example.jobcoach.domain.PreparationPlan;
+import com.example.jobcoach.domain.MatchReport;
 
-/** Port for the explicitly approved preparation-plan side effect. */
 public interface PreparationPlanTool {
-    PreparationPlan save(PreparationPlan plan);
+    PreparationPlan preview(MatchReport report);
 }

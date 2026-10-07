@@ -16,6 +16,7 @@ button:disabled { background: #aab7c2; cursor: not-allowed; }
 .hint, .empty { color: #667384; font-size: 14px; }
 .error { color: #a23a32; background: #fff0ee; padding: 10px; border-radius: 6px; }
 .error p { margin: 0 0 10px; }
+.error .error-details { color: #725a57; font-size: 12px; }
 .retry { background: #8a3d35; padding: 8px 12px; font-size: 14px; }
 .report { display: grid; gap: 18px; }
 .report section { border-top: 1px solid #e3e8ed; padding-top: 14px; }
@@ -26,4 +27,8 @@ button:disabled { background: #aab7c2; cursor: not-allowed; }
 .score strong { color: #1f6f9d; font-size: 42px; line-height: 1; }
 .matched { color: #26734d; }
 .unmatched { color: #946c00; }
+.plan-section button { margin: 4px 0 12px; }
+.plan-preview ol { padding-left: 22px; }
+.plan-preview li { margin-bottom: 16px; }
+.plan-preview p { margin: 4px 0; }
 @media (max-width: 760px) { .workspace { grid-template-columns: 1fr; } .shell { padding: 28px 16px; } }

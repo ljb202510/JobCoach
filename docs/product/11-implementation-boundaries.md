@@ -2,7 +2,8 @@
 
 ## 已实现
 
-- Fake 模式 `POST /api/matches` 前后端闭环。
+- Fake 与 Real 模式 `POST /api/matches` 前后端闭环；Real 模式本轮样本通过，长期稳定性待观察。
+- `POST /api/preparation-plans/preview` 在 Fake 模式按规则生成、Real 模式通过受控 Tool Calling 生成；均不保存。
 - Vue 提交、加载、错误、空状态和结构化报告展示。
 - Spring Boot 输入校验、统一错误 JSON、开发 CORS。
 - HTTP、应用服务和 Fake gateway 测试。
@@ -10,7 +11,7 @@
 
 ## 未实现
 
-- 真实模型 gateway、结构化输出解析和 Tool Calling 执行。
+- 真实模型自然产生的非法结构样本和长期质量评测。
 - MySQL/Flyway 或 MyBatis-Plus 接入、报告和任务持久化。
 - 用户认证、会话隔离、删除 API、文件上传和流式响应。
 - RAG、模拟面试、多 Agent 产品能力。
@@ -20,7 +21,7 @@
 - Fake 报告不随输入变化，只用于链路演示。
 - CORS 配置面向本地开发，不是生产安全配置。
 - 本机 MySQL 8.4.9 环境已具备，但 schema 尚未经过真实 MySQL 集成测试和隐私评审。
-- 真实模型质量、成本、延迟和兼容性均未测量。
+- 已记录少量真实请求耗时与成功/超时类别；质量、成本及长期兼容性未系统测量。
 
 ## 边界维护步骤
 

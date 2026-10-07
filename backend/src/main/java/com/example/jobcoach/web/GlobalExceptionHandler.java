@@ -35,6 +35,13 @@ public class GlobalExceptionHandler {
         return error(HttpStatus.BAD_REQUEST, "BODY_INVALID", "请求体不是有效的 JSON", request);
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ApiError> handleInvalidArgument(
+            IllegalArgumentException exception,
+            HttpServletRequest request) {
+        return error(HttpStatus.BAD_REQUEST, "INPUT_INVALID", "请求字段不符合要求", request);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> handleUnexpected(
             Exception exception,
@@ -46,8 +53,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ApiError> handleAiGateway(
             AiGatewayException exception,
             HttpServletRequest request) {
-        HttpStatus status = exception.getCode().equals("AI_CONFIG_INVALID")
-                ? HttpStatus.INTERNAL_SERVER_ERROR : HttpStatus.BAD_GATEWAY;
+        HttpStatus status = switch (exception.getCode()) {
+            case "AI_CONFIG_INVALID" -> HttpStatus.INTERNAL_SERVER_ERROR;
+            case "AI_TIMEOUT" -> HttpStatus.GATEWAY_TIMEOUT;
+            default -> HttpStatus.BAD_GATEWAY;
+        };
         return error(status, exception.getCode(), "AI 分析服务暂时不可用", request);
     }
 

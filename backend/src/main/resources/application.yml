@@ -1,8 +1,8 @@
 spring:
   application:
     name: jobcoach
-  profiles:
-    default: fake
+  config:
+    import: optional:file:../.env[.properties]
 server:
   port: 8080
 jobcoach:
@@ -13,3 +13,5 @@ jobcoach:
     base-url: ${AI_BASE_URL:}
     model: ${AI_MODEL:}
     api-key: ${AI_API_KEY:}
+    connect-timeout: ${AI_CONNECT_TIMEOUT:3s}
+    read-timeout: ${AI_READ_TIMEOUT:25s}

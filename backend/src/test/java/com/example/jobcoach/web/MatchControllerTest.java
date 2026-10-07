@@ -10,7 +10,8 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+        properties = "jobcoach.ai.provider=fake")
 class MatchControllerTest {
     @LocalServerPort
     int port;
@@ -34,6 +35,21 @@ class MatchControllerTest {
         org.junit.jupiter.api.Assertions.assertEquals(400, response.statusCode());
         org.junit.jupiter.api.Assertions.assertTrue(response.body().contains("\"code\":\"INPUT_INVALID\""));
         org.junit.jupiter.api.Assertions.assertTrue(response.body().contains("\"path\":\"/api/matches\""));
+    }
+
+    @Test
+    void acceptsMaximumInputLength() throws Exception {
+        var response = post("{\"jobDescription\":\"" + "a".repeat(20_000)
+                + "\",\"profile\":\"profile\"}");
+        org.junit.jupiter.api.Assertions.assertEquals(200, response.statusCode());
+    }
+
+    @Test
+    void rejectsInputLongerThanMaximum() throws Exception {
+        var response = post("{\"jobDescription\":\"" + "a".repeat(20_001)
+                + "\",\"profile\":\"profile\"}");
+        org.junit.jupiter.api.Assertions.assertEquals(400, response.statusCode());
+        org.junit.jupiter.api.Assertions.assertTrue(response.body().contains("\"code\":\"INPUT_INVALID\""));
     }
 
     @Test

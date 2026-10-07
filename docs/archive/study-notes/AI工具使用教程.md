@@ -265,7 +265,7 @@ planning-with-files 用 Markdown 文件保存长任务的计划、发现和进�
 不同版本的文件名和工作方式可能不同；常见布局包括：
 
 - 当前目标：`docs/plan/PROJECT_GOALS.md`。
-- 当前执行计划：`docs/plan/20-hour-sprint.md`。
+- 当前执行计划：`docs/plan/mvp-closeout-plan.md`。
 - 历史记录：`docs/archive/project-history/`，仅供追溯，不作为当前目标。
 
 以安装版本实际说明为准，避免自己创建一套和工具不兼容的文件。

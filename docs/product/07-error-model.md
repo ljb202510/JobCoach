@@ -1,12 +1,13 @@
-# 错误模型草案
+# 错误模型
 
 | 类别 | 示例 | HTTP 建议 | 用户行为 |
 |---|---|---:|---|
 | INPUT_INVALID | 必填或超长 | 400 | 修正输入 |
 | BODY_INVALID | 请求体不是合法 JSON | 400 | 修正请求后重试 |
-| MODEL_UNAVAILABLE | 上游连接/认证失败 | 502/503 | 检查配置或重试 |
-| MODEL_TIMEOUT | 上游超时 | 504 | 保留输入后重试 |
-| OUTPUT_INVALID | 结构无法解析或校验失败 | 502 | 可重试，记录诊断信息 |
+| AI_CONFIG_INVALID | 真实模式缺少模型名 | 500 | 检查本机配置；基础地址缺失目前导致启动失败 |
+| AI_PROVIDER_ERROR | 上游连接/认证/HTTP 错误 | 502 | 检查配置或重试 |
+| AI_TIMEOUT | 上游超时 | 504 | 保留输入后重试 |
+| AI_RESPONSE_INVALID | 结构无法解析或校验失败 | 502 | 可重试，记录脱敏诊断信息 |
 | TOOL_FAILED | 保存任务失败 | 500/业务错误 | 保留报告并重试工具 |
 
 响应不包含密钥、Authorization 值或原始上游敏感头。
@@ -24,7 +25,7 @@
 | 类别 | 是否保留输入 | 是否允许自动重试 | 是否需要人工动作 |
 |---|---|---|---|
 | INPUT_INVALID | 是 | 否 | 修改字段 |
-| MODEL_TIMEOUT | 是 | 可限次重试 | 必要时重试 |
-| OUTPUT_INVALID | 是 | 可重新生成 | 需要诊断/降级 |
+| AI_TIMEOUT | 是 | 不自动重试 | 用户主动重试 |
+| AI_RESPONSE_INVALID | 是 | 不自动重试 | 用户主动重试或切换演示模式 |
 | TOOL_FAILED | 是 | 仅幂等时 | 确认任务状态 |
-| AUTH/CONFIG | 是 | 否 | 检查配置权限 |
+| AI_CONFIG_INVALID | 是 | 否 | 检查配置权限 |

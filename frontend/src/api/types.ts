@@ -35,3 +35,17 @@ export interface ApiError {
   path: string
   timestamp: string
 }
+
+export interface PreparationTask {
+  title: string
+  objective: string
+  priority: string
+  completionCriteria: string
+}
+
+export interface PreparationPlan {
+  id: string | null
+  matchId: string | null
+  status: 'PREVIEW'
+  tasks: PreparationTask[]
+}

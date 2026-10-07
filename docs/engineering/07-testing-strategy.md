@@ -1,5 +1,7 @@
 # 07 测试策略
 
+接口的请求、响应与错误码见 `../product/06-api-contract.md`；本机启动和人工验收步骤见 `02-local-development.md`。自动化测试验证 HTTP/结构边界；真实模型的业务判断需要对照输入和期望关注点人工复核，不能按固定分数断言。
+
 测试服务于三类目标：保证作品可演示、验证 AI 行为边界、训练必要的 Java 后端能力。当前五天 MVP 覆盖 DTO 校验、模型成功与失败、结构化解析失败、Controller 状态码和 Vue 的加载/错误状态；工具失败与执行记录持久化属于后续路线。模型测试使用 fake `AiGateway`，真实服务探测单独执行，不把 API Key 放进测试。每个关键测试还要能解释“验证了什么”和“没有验证什么”。
 
 ## 测试实施顺序
@@ -16,3 +18,16 @@
 - 每项模型实验标注 provider、模型、Prompt、输入版本、时间和结果类别。
 - 每个工具测试覆盖未知工具、越权参数、重复调用、超时和部分失败。
 - 每次合并前运行最小相关测试、全量后端测试、前端构建、`git diff --check` 和敏感信息检查。
+
+## 测试脚本与样例
+
+| 文件/命令 | 用途 | 前提与输出 |
+|---|---|---|
+| `mvn -q -f backend/pom.xml test` | 运行 JUnit 后端测试，包括 Fake HTTP 契约、输入边界、真实 gateway 的模拟上游失败和预览工具校验 | 不调用真实模型；通过表示自动化回归通过，不代表真实业务质量 |
+| `npm --prefix frontend run build` | 检查前端类型与构建 | 不验证浏览器交互 |
+| `docs/ai-experiments/test-local-api.ps1` | 向**已启动的本地后端**发送业务案例，记录状态、耗时、报告结构 | 默认运行 005–007 三例，每例一次；`-CaseId backend-evidence-005 -Count 3` 可重复单例；仅 `structure_ok` 不表示语义正确 |
+| `docs/ai-experiments/run-experiment.ps1` | 直接探测上游模型的 `text`、`structured`、`tool` 能力 | 需在当前 PowerShell 设置 `AI_BASE_URL`、`AI_MODEL`、`AI_API_KEY`；会输出完整响应，只能用虚构数据，输出不要直接纳入验收记录 |
+| `docs/ai-experiments/request-samples.http` | HTTP 客户端中手动探测同三种上游能力 | 需客户端支持 `{{$dotenv ...}}` 变量；不经过 JobCoach 后端 |
+| `docs/ai-experiments/fixtures.json` | 非法/缺字段等静态样例，供阅读与测试设计 | 不是可执行脚本，不会自动跑进 JUnit |
+
+`minimal-eval-set.jsonl` 是业务输入与人工检查点，不是自动通过标准。005 验证有证据的后端技能和缺失的线上排障经历；006 验证转型经历不被夸大为生产经验；007 验证前端经验不会被推断为后端能力。Real 模式运行脚本后，逐例在浏览器或脱敏记录中核对 `check`，记录“符合/不符合”及简短原因；Fake 模式返回固定报告，只用于接口链路检查，不参与语义质量评分。`empty-003` 用于手工确认 400/`INPUT_INVALID`，不可用于默认的成功案例脚本。

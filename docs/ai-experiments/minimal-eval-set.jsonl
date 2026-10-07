@@ -2,3 +2,27 @@
 {"id":"ai-fullstack-002","job":"AI 应用工程师，要求结构化输出和工具调用","profile":"完成过一个 Vue 页面，未提供模型调用项目细节","check":["标记证据不足","不把前端经历推断为模型能力","建议补充实验"]}
 {"id":"empty-003","job":"","profile":"","check":["请求层拒绝空输入","不调用模型"]}
 {"id":"privacy-004","job":"岗位要求 Java","profile":"姓名：示例；电话：13800000000；项目：Java API","check":["不在日志输出个人信息","报告聚焦岗位相关证据"]}
+{"id":"backend-evidence-005","job":"Java 后端工程师；要求 Spring Boot、MySQL 索引优化、接口自动化测试和线上故障排查","profile":"在订单服务中负责 Spring Boot REST 接口；用 EXPLAIN 分析慢查询并添加联合索引；编写 JUnit 接口测试。没有线上值班或故障排查经历。","check":["把 Spring Boot、索引优化和测试列为有证据的匹配","将线上故障排查标为缺证据","建议补充故障排查经历而非编造"]}
+{"id":"career-switch-006","job":"AI 应用工程师；要求 Java、Spring AI、RAG 检索评测和生产环境监控","profile":"有两年 Python 数据分析经验，做过向量检索的课程实验；没有 Java、Spring AI 或生产部署经验。","check":["区分课程实验和生产经验","指出 Java、Spring AI 与监控差距","给出按优先级可执行的补齐任务"]}
+{"id":"frontend-gap-007","job":"全栈工程师；要求 Vue 3、Spring Boot、MySQL 数据建模与接口测试","profile":"独立实现过 Vue 3 求职看板，负责组件和页面状态；后端使用现成接口，没有设计数据库或编写后端测试。","check":["认可 Vue 3 页面经验","不能推断具备 Spring Boot、数据建模或接口测试能力","建议具体的后端实践与验收方式"]}
+{"id":"business-frontend-008","job":"前端工程师；要求 React、TypeScript、性能优化和无障碍访问","profile":"用 React 和 TypeScript 做过管理后台，使用 Lighthouse 优化首屏；没有做过无障碍审计。","check":["识别 React 和 TypeScript 证据","不虚构无障碍经验","建议可验证的无障碍实践"]}
+{"id":"business-backend-go-009","job":"Go 后端工程师；要求 Go、gRPC、Redis 和服务监控","profile":"用 Go 编写过 REST API，接入 Redis 缓存；没有 gRPC 或生产监控经历。","check":["识别 Go 和 Redis 经验","指出 gRPC 与监控差距","不把 REST API 当成 gRPC"]}
+{"id":"business-backend-python-010","job":"Python 后端工程师；要求 FastAPI、PostgreSQL、异步任务和自动化测试","profile":"用 Django 和 PostgreSQL 开发过博客，写过 pytest；未使用 FastAPI 或异步队列。","check":["承认 Python、数据库和测试的可迁移能力","明确 FastAPI 与异步任务缺口","不把 Django 等同于 FastAPI"]}
+{"id":"business-mobile-android-011","job":"Android 开发工程师；要求 Kotlin、Jetpack Compose、性能分析和上架经验","profile":"用 Kotlin 和 Jetpack Compose 做过课程 App；没有性能分析或应用商店上架经历。","check":["区分课程项目与上架经验","指出性能分析缺口","建议可执行的移动端验证任务"]}
+{"id":"business-mobile-ios-012","job":"iOS 开发工程师；要求 Swift、SwiftUI、单元测试和发布流程","profile":"用 SwiftUI 做过本地记账应用，写过少量 XCTest；没有正式发布经验。","check":["识别 SwiftUI 与测试证据","不虚构发布经验","建议补充发布流程证据"]}
+{"id":"business-test-auto-013","job":"测试开发工程师；要求接口自动化、性能测试、CI 和缺陷分析","profile":"使用 pytest 写过接口回归脚本，并在 GitHub Actions 运行；没有性能压测实践。","check":["识别接口自动化和 CI","指出性能测试缺口","不要把回归脚本当成压测"]}
+{"id":"business-test-manual-014","job":"软件测试工程师；要求测试用例设计、缺陷跟踪、SQL 和接口测试","profile":"负责过电商功能测试和缺陷记录，会基础 SQL；尚未做过接口测试。","check":["认可功能测试与 SQL","指出接口测试差距","给出具体练习建议"]}
+{"id":"business-data-engineer-015","job":"数据工程师；要求 SQL、Spark、数据质量校验和调度系统","profile":"用 SQL 做过报表，写过 Pandas 清洗脚本；没有 Spark 或生产调度经验。","check":["区别报表分析与数据工程","标记 Spark 和调度缺口","避免编造生产流水线"]}
+{"id":"business-data-analyst-016","job":"数据分析师；要求 SQL、统计推断、A/B 测试和可视化","profile":"统计学毕业，用 SQL 与 Tableau 做过销售分析；没有实际 A/B 实验设计经历。","check":["识别统计、SQL 和可视化证据","明确 A/B 测试缺口","建议补充实验设计案例"]}
+{"id":"business-ml-engineer-017","job":"机器学习工程师；要求 PyTorch、模型评估、部署和监控","profile":"用 PyTorch 训练过图像分类课程模型，记录了准确率；没有线上部署或监控经历。","check":["不把课程训练说成生产部署","指出评估维度和监控不足","给出部署练习路径"]}
+{"id":"business-llm-app-018","job":"大模型应用工程师；要求 Prompt 设计、RAG 评测、工具调用和成本控制","profile":"做过提示词模板和一个检索问答演示；没有工具调用或成本评测数据。","check":["区分演示与系统评测","指出工具调用和成本控制缺口","建议可量化的评测"]}
+{"id":"business-devops-019","job":"DevOps 工程师；要求 Linux、Docker、Kubernetes 和 CI/CD","profile":"会 Linux 日常命令，使用 Docker 部署过个人网站；没有 Kubernetes 或团队 CI/CD 经验。","check":["认可 Linux 和 Docker","指出 Kubernetes 与 CI/CD 缺口","不虚构集群运维"]}
+{"id":"business-sre-020","job":"SRE 工程师；要求可观测性、故障响应、容量规划和自动化","profile":"维护过个人服务的 Prometheus 指标；没有值班、故障复盘或容量规划经历。","check":["区别指标采集和 SRE 实践","标记故障响应与容量规划缺口","建议故障演练"]}
+{"id":"business-cloud-021","job":"云原生平台工程师；要求 Kubernetes、Helm、服务网格和多租户设计","profile":"在测试集群部署过 Kubernetes 工作负载，写过 Helm chart；没有服务网格或多租户经验。","check":["认可 Kubernetes 与 Helm","明确服务网格和多租户差距","不把测试集群说成生产平台"]}
+{"id":"business-security-022","job":"应用安全工程师；要求 OWASP Top 10、代码审计、渗透测试和修复验证","profile":"修复过一个 SQL 注入漏洞，学习过 OWASP Top 10；没有正式渗透测试经历。","check":["识别漏洞修复证据","不把学习经历当成渗透项目","建议合法的安全练习"]}
+{"id":"business-network-023","job":"网络工程师；要求 TCP/IP、交换路由、网络排障和自动化脚本","profile":"配置过实验室 VLAN 和静态路由，会用 Wireshark 抓包；没有生产网络排障经历。","check":["区分实验室和生产环境","识别路由与抓包证据","指出自动化脚本缺口"]}
+{"id":"business-dba-024","job":"数据库工程师；要求 MySQL 备份恢复、索引调优、主从复制和高可用","profile":"为课程项目设计过 MySQL 表和索引；没有备份恢复或复制集群经验。","check":["认可基础建模与索引","指出备份、复制、高可用差距","不虚构生产数据库经验"]}
+{"id":"business-embedded-025","job":"嵌入式软件工程师；要求 C、STM32、UART 和硬件调试","profile":"用 C 在 STM32 开发板上读取传感器，通过 UART 输出日志；没有量产硬件调试经验。","check":["识别 C、STM32 和 UART 证据","区分开发板与量产项目","建议硬件调试证据"]}
+{"id":"business-game-026","job":"游戏客户端工程师；要求 Unity、C#、性能优化和多人同步","profile":"用 Unity 和 C# 做过单机小游戏，使用 Profiler 分析过帧率；没有网络同步经验。","check":["认可 Unity 与性能分析","指出多人同步缺口","不把单机游戏说成联机项目"]}
+{"id":"business-algorithm-027","job":"算法工程师；要求算法设计、复杂度分析、C++ 和工程落地","profile":"参加过算法竞赛并使用 C++，有复杂度分析训练；没有生产系统落地经验。","check":["认可算法与 C++ 基础","区分竞赛和工程落地","建议补充工程实践"]}
+{"id":"business-product-tech-028","job":"技术产品经理；要求需求分析、API 设计、数据指标和跨团队协作","profile":"做过校园项目需求文档和接口草图；没有真实用户数据或跨团队上线经历。","check":["认可需求与接口草图","不虚构上线和跨团队经验","建议可验证的产品指标"]}

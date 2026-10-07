@@ -28,11 +28,9 @@
 9. [演示脚本](08-demo-script.md)
 10. [简历描述](09-resume-description.md)
 
-跨文档说明单独使用语义化文件名，避免与主规格编号混淆：
+跨文档说明合并到单篇 `overview.md`：
 
-- [产品需求与边界概览](requirements-overview.md)
-- [架构设计概览](architecture-overview.md)
-- [API 设计概览](api-design-overview.md)
+- [产品概览（需求/架构/API）](overview.md)
 
 ## 后续只需集中确认的产品问题
 

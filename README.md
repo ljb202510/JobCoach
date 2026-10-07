@@ -6,7 +6,7 @@ JobCoach 是一个以 Java 为主线的 AI 求职准备系统，帮助求职者�
 岗位描述 + 个人经历
         -> 匹配分析
         -> 证据与技能差距
-        -> 准备建议
+        -> 准备建议与计划预览
         -> 任务保存（后续阶段）
 ```
 
@@ -22,20 +22,21 @@ JobCoach 是一个以 Java 为主线的 AI 求职准备系统，帮助求职者�
 - Fake 模式 `POST /api/matches` 匹配接口。
 - 输入校验、统一错误响应和健康检查 `GET /api/health`。
 - Vue 3 + TypeScript + Vite 页面骨架。
-- Fake API 的提交、加载、成功、空状态、错误和结构化报告展示。
+- Fake 与 Real 的提交、加载、成功、错误和结构化报告展示；准备计划可预览但不保存。
+- 真实模型普通文本、结构化匹配报告和 `preview_preparation_plan` 工具调用已有脱敏实测记录。
 - 后端 `mvn test -q` 和前端 `npm run build` 验证。
 
 当前环境已经具备 MySQL 8.4.9，但数据库功能仍处于设计和接入前阶段。已有 schema 是草案，尚未接入迁移、Repository、事务和集成测试。
 
 尚未完成或仍需单独验证：
 
-- 真实模型 gateway、结构化输出和模型能力评测。
+- 真实模型长期稳定性、自然产生的非法结构样本和持续模型质量评测。
 - LangChain4j 与当前 Spring Boot 版本的集成验证。
-- 受控 Tool Calling 和准备任务保存。
+- 准备任务保存及其用户确认、持久化和幂等性。
 - MySQL 持久化、删除策略和隐私评审。
 - RAG、流式输出、登录、文件解析和多 Agent 产品能力。
 
-详细状态见 [`docs/engineering/status-matrix.md`](docs/engineering/status-matrix.md) 和当前 [`20 小时冲刺计划`](docs/plan/20-hour-sprint.md)。历史计划与日志统一放在 [`docs/archive/`](docs/archive/README.md)，不作为当前目标依据。
+详细状态见 [`docs/engineering/status-matrix.md`](docs/engineering/status-matrix.md) 和当前 [`MVP 收口计划`](docs/plan/mvp-closeout-plan.md)。历史计划与日志统一放在 [`docs/archive/`](docs/archive/README.md)，不作为当前目标依据。
 
 ## 技术结构
 
@@ -65,14 +66,14 @@ Spring Boot Web -> Application -> Domain
 
 - [本地运行说明](docs/engineering/02-local-development.md)：环境检查、测试、启动和 Fake 演示。
 - [项目目标](docs/plan/PROJECT_GOALS.md)：产品目标、4:4:2 投入权重和完成判据。
-- [20 小时冲刺计划](docs/plan/20-hour-sprint.md)：当前唯一执行计划，包含完整敏捷开发、学习和验收流程。
+- [MVP 收口计划](docs/plan/mvp-closeout-plan.md)：当前唯一执行计划，包含完整敏捷开发、学习和验收流程。
 - [下一步 backlog](docs/plan/next-backlog.md)：本轮之外的候选工作。
 - [文档导航](docs/README.md)：计划、产品、工程、概念、AI coding 和 Review 材料。
 - [实现边界](docs/product/11-implementation-boundaries.md)：已实现、未实现和当前局限。
 
 ## 当前执行路线
 
-当前只执行 [`JobCoach 20 小时冲刺`](docs/plan/20-hour-sprint.md)。它把需求评审、优先级排序、模块拆分、阅读学习、实现、单元测试、整体联调、Code Review、快速迭代和最终交付串成一个连续敏捷闭环。旧五天计划和 30 天路线已归档，避免与当前目标混淆。
+当前只执行 [`JobCoach MVP 收口计划`](docs/plan/mvp-closeout-plan.md)。它把需求评审、优先级排序、模块拆分、阅读学习、实现、单元测试、整体联调、Code Review、快速迭代和最终交付串成一个连续敏捷闭环。旧五天计划和 30 天路线已归档，避免与当前目标混淆。
 
 ## 安全与可信边界
 

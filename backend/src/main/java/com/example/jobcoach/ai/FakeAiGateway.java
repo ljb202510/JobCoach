@@ -1,13 +1,13 @@
 package com.example.jobcoach.ai;
 
 import com.example.jobcoach.domain.MatchReport;
-import org.springframework.context.annotation.Profile;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-@Profile("fake")
+@ConditionalOnProperty(prefix = "jobcoach.ai", name = "provider", havingValue = "fake", matchIfMissing = true)
 public class FakeAiGateway implements AiGateway {
     @Override
     public MatchReport analyze(String jobDescription, String profile) {
